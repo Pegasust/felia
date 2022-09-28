@@ -2,8 +2,8 @@ server {
     listen 80;
     server_name ${domain} www.${domain};
 
-    location /.well-known/acme-challenge/ {
-        root /var/www/certbot/${domain};
+    location ^~ /.well-known/acme-challenge/* {
+        root /var/www/certbot/${domain}/;
     }
 
     location / {

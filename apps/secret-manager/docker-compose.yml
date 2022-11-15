@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  vault:
+    image: vault:1.11.3
+    restart: always
+    entrypoint: vault server -config=vault/config/vault.json
+    volumes:
+    - hashicorp_vault:/vault
+    - ./config/hashicorp:/vault/config
+    cap_add:
+    - IPC_LOCK
+    networks: [felia]
+    ports:
+    - 8200:8200
+volumes:
+  hashicorp_vault:
+
+networks:
+  felia:
+    name: felia-nginx-net

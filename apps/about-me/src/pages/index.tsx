@@ -49,16 +49,18 @@ const Shapes = () => <div className="absolute flex items-center justify-center">
   <Circle size={4} />
 </div>
 
-const Brief = () => <article className="w-screen flex flex-col justify-center items-center overflow-hidden text-center min-h-screen gap-2">
+const Brief = () => <article className="relative w-screen flex flex-col justify-center items-center overflow-hidden text-center min-h-screen gap-2">
   {/*Avatar*/}
-  <Shapes />
-  <div className="rounded-full w-[200px] h-[200px] overflow-hidden flex justify-center">
-    <div className="flex justify-center items-center">
-      <Image
-        src="/assets/myself.jpg"
-        width={512}
-        height={512}
-        alt="Hung's avatar" />
+  <div className="flex justify-center items-center">
+    <Shapes />
+    <div className="rounded-full w-[200px] h-[200px] overflow-hidden flex justify-center">
+      <div className="flex justify-center items-center">
+        <Image
+          src="/assets/myself.jpg"
+          width={512}
+          height={512}
+          alt="Hung's avatar" />
+      </div>
     </div>
   </div>
   <h1 className="text-3xl semi-bold z-10">

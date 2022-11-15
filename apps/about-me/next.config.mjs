@@ -9,6 +9,9 @@
 const config = {
   reactStrictMode: true,
   swcMinify: true,
+  experimental: {
+    transpilePackages: [],
+  },
   i18n: {
     locales: ["en"],
     defaultLocale: "en",

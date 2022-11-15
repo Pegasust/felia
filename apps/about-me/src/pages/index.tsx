@@ -85,31 +85,31 @@ const Blog = () => <article>
 
 const Projects = () => <article className="flex flex-col">
   <span>
-    I was about to type Lorem Ipsum until I realize I couldn't even remember the content
+    I was about to type Lorem Ipsum until I realize I could not even remember the content
     of the first sentence.
   </span>
   <span>
-    I was about to type Lorem Ipsum until I realize I couldn't even remember the content
+    I was about to type Lorem Ipsum until I realize I could not even remember the content
     of the first sentence.
   </span>
   <span>
-    I was about to type Lorem Ipsum until I realize I couldn't even remember the content
+    I was about to type Lorem Ipsum until I realize I could not even remember the content
     of the first sentence.
   </span>
   <span>
-    I was about to type Lorem Ipsum until I realize I couldn't even remember the content
+    I was about to type Lorem Ipsum until I realize I could not even remember the content
     of the first sentence.
   </span>
   <span>
-    I was about to type Lorem Ipsum until I realize I couldn't even remember the content
+    I was about to type Lorem Ipsum until I realize I could not even remember the content
     of the first sentence.
   </span>
   <span>
-    I was about to type Lorem Ipsum until I realize I couldn't even remember the content
+    I was about to type Lorem Ipsum until I realize I could not even remember the content
     of the first sentence.
   </span>
   <span>
-    I was about to type Lorem Ipsum until I realize I couldn't even remember the content
+    I was about to type Lorem Ipsum until I realize I could not even remember the content
     of the first sentence.
   </span>
 </article>

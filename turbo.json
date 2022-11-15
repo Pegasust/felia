@@ -5,10 +5,33 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "about-me#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "env": [
+        "VERCEL_URL",
+        "RENDER_INTERNAL_HOSTNAME",
+        "PORT",
+        "NODE_ENV",
+        "DATABASE_URL",
+      ],
+      "outputs": ["dist/**", ".next/**"]
+    },
     "lint": {
       "outputs": []
     },
     "dev": {
+      "cache": false
+    },
+    "dev:local_infra": {
+      "cache": false
+    },
+    "db:migrate": {
+      "cache": false
+    },
+    "test": {
+      "outputs": [],
       "cache": false
     }
   }

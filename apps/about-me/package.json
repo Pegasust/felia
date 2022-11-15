@@ -19,26 +19,29 @@
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.6.0",
     "superjson": "1.9.1",
-    "zod": "^3.18.0",
-    "ui": "workspace:*"
+    "ui": "workspace:*",
+    "zod": "^3.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "autoprefixer": "^10.4.7",
+    "class-variance-authority": "^0.3.0",
     "eslint": "^8.26.0",
+    "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "prisma": "^4.5.0",
+    "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.2.0",
+    "tsconfig": "workspace:*",
     "typescript": "^4.8.4"
   },
   "ct3aMetadata": {

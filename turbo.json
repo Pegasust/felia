@@ -5,19 +5,6 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
-    "about-me#build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "env": [
-        "VERCEL_URL",
-        "RENDER_INTERNAL_HOSTNAME",
-        "PORT",
-        "NODE_ENV",
-        "DATABASE_URL",
-      ],
-      "outputs": ["dist/**", ".next/**"]
-    },
     "lint": {
       "outputs": []
     },
@@ -33,6 +20,19 @@
     "test": {
       "outputs": [],
       "cache": false
+    },
+    "about-me#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "env": [
+        "VERCEL_URL",
+        "RENDER_INTERNAL_HOSTNAME",
+        "PORT",
+        "NODE_ENV",
+        "DATABASE_URL"
+      ],
+      "outputs": ["dist/**", ".next/**"]
     }
   }
 }

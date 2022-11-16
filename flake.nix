@@ -36,6 +36,7 @@
             pkgs.pscale
             pkgs.act
             pkgs.cypress
+            pkgs.nodePackages.vercel
           ];
           shellHook =
             # https://github.com/prisma/prisma/issues/3026#issuecomment-927258138

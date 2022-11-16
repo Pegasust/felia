@@ -15,6 +15,7 @@
       "@trpc/*": ["src/server/trpc/*"],
       "@router/*": ["src/server/trpc/router"],
       "@public/*": ["public/*"]
+      
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply scrollbar-track-gray-50 scrollbar-thumb-amber-400
+    }
+}

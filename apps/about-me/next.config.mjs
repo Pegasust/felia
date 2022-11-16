@@ -12,6 +12,11 @@ const config = {
   experimental: {
     transpilePackages: [],
   },
+  images: {
+    domains: [
+      "hungtr-personal-drive.s3.us-west-1.amazonaws.com"
+    ],
+  },
   i18n: {
     locales: ["en"],
     defaultLocale: "en",

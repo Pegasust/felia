@@ -1,3 +1,17 @@
 {
   "extends": "tsconfig/t3.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@env/*": ["src/env/*"],
+      "@pages/*": ["src/pages/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@server/*": ["src/server/*"],
+      "@db/*": ["src/server/db/*"],
+      "@trpc/*": ["src/server/trpc/*"],
+      "@router/*": ["src/server/trpc/router"],
+      "@public/*": ["public/*"]
+    }
+  }
 }

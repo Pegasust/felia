@@ -12,8 +12,9 @@
       "@server/*": ["src/server/*"],
       "@db/*": ["src/server/db/*"],
       "@trpc/*": ["src/server/trpc/*"],
-      "@router/*": ["src/server/trpc/router"],
-      "@public/*": ["public/*"]
+      "@router/*": ["src/server/trpc/router/*"],
+      "@public/*": ["public/*"],
+      "@components/*": ["src/components/*"]
     }
   }
 }

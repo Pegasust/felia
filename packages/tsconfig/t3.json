@@ -4,19 +4,6 @@
   "extends": "./nextjs.json",
   "compilerOptions": {
     "declaration": false,
-    "baseUrl": ".",
-    "paths": {
-      "@env/*": ["src/env/*"],
-      "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@server/*": ["src/server/*"],
-      "@db/*": ["src/server/db/*"],
-      "@trpc/*": ["src/server/trpc/*"],
-      "@router/*": ["src/server/trpc/router"],
-      "@public/*": ["public/*"]
-      
-    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
   "exclude": ["node_modules"],

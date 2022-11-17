@@ -18,6 +18,7 @@ import Lizzie from "@public/assets/lizzie.jpg";
 import SantaMonicaStairs from "@public/assets/santa-monica-stairs.jpg";
 import SantaMonicaHigh from "@public/assets/santa-monica-high.jpg";
 import assert from "assert";
+import { Section, SectionHeader, UL } from "@components/index";
 
 const circle = cva("absolute rounded-full border -z-10", {
   variants: {
@@ -64,14 +65,14 @@ const Article: React.FC<{ children?: ReactNode }> = ({ children }) => <article
 </article>
 
 
-const InpageSection: React.FC<{href: string, children?: ReactNode}>= ({
+const InpageSection: React.FC<{ href: string, children?: ReactNode }> = ({
   href,
   children
 }) => <Link href={href} className="p-2 text-lg text-gray-500/50 rounded-3xl 
     border border-amber-400/50 hover:text-gray-500 hover:border-amber-400 transition-colors
     hover:animate-pulse">
-  {children}
-</Link>
+    {children}
+  </Link>
 
 const Brief = () => <Article>
   {/*Avatar*/}
@@ -101,13 +102,6 @@ const Brief = () => <Article>
   </div>
 </Article>
 
-const SectionHeader: React.FC<{ text?: string, children?: ReactNode }> = ({ text, children }) => <div>
-  <h1 className="text-xl text-gray-600 tracking-widest">
-    {text}
-    {children}
-  </h1>
-  <div className="mt-8" />
-</div>
 
 const images = [
   {
@@ -232,11 +226,11 @@ const ImageDisplay: React.FC<{ imageDisplayHook: ImageDisplayHook }> = ({ imageD
           key={`img-index-${i}`} />)}
       </div>
     </div>
-    {image && <Image src={image.src} alt={image.alt} className="w-96 h-96 object-contain rounded-md overflow-hidden transition-all" />}
+    {image && <Image placeholder="blur" src={image.src} alt={image.alt} className="w-96 h-96 object-contain rounded-md overflow-hidden transition-all" />}
   </div>
 
 const MyLink: React.FC<{ href: string, children?: ReactNode }> = ({ href, children }) => <Link
-  className="text-amber-400/70 visited:text-purple-300/70 hover:text-amber-400 visited:hover:text-purple-300" href={href}>
+  className="text-amber-400/70 visited:text-purple-400/70 hover:text-amber-400 visited:hover:text-purple-400" href={href}>
   {children}
 </Link>
 
@@ -248,33 +242,33 @@ const About = () => {
     <div className="flex flex-row gap-4">
       <ImageDisplay imageDisplayHook={imgDisplay} />
       <div className="text-left">
-        <section>
+        <Section>
           <span>
             Aspiring software engineer with intense drive and curiosity in software development.
           </span>
-        </section>
-        <section className="max-w-4xl">
+        </Section>
+        <Section className="max-w-4xl">
           My computer infrastructure consists of:
-          <ul className="list-disc list-inside">
+          <UL>
             <li>24 home CPU cores</li>
             <li>60 GB of RAM (4 GB SDDR3 and 56 GB DDR4)</li>
             <li>2.5 TB of SSD + HDD</li>
             <li>A mix of NixOS, Ubuntu, and Windows</li>
-          </ul>
-        </section>
-        <section>
+          </UL>
+        </Section>
+        <Section>
           <span>
             In free time, you would find me:
           </span>
-          <ul className="list-disc list-inside">
+          <UL>
             <li>Learning about new technology in a week</li>
             <li>Performing microbenchmarks on competing implementations and technologies</li>
             <li>Optimizing my workspace through <MyLink href="https://git.pegasust.com/pegasust/dotfiles.git">dotfiles</MyLink></li>
             <li>Contributing to open-source projects</li>
             <li>Watching edutainment videos and podcasts about software</li> {/*TODO: add link to edutainment note-taking platform here*/}
             <li><MyLink href="https://soundcloud.com/h-ng-tr-n-186908751">Producing music</MyLink></li>
-          </ul>
-        </section>
+          </UL>
+        </Section>
       </div>
     </div>
   </Article>

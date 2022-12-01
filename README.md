@@ -5,7 +5,6 @@ Scaffolded by `pnpm create turbo@latest`
 This project manages my homelab infrastructure under a monorepo to keep things
 centralized and easily sharable across different modules
 
-
 # Turbo-repo details
 
 ## What's inside?
@@ -14,11 +13,11 @@ This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes th
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `apps/docs`: a [Next.js](https://nextjs.org/) app
+- `apps/web`: another [Next.js](https://nextjs.org/) app
+- `packages/ui`: a stub React component library shared by both `web` and `docs` applications
+- `packages/eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `packages/tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 

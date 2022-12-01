@@ -20,6 +20,41 @@ import SantaMonicaHigh from "@public/assets/santa-monica-high.jpg";
 import assert from "assert";
 import { Section, SectionHeader, UL } from "@components/index";
 
+type Theme = "dark" | "light";
+
+const ThemeContext = React.createContext<{
+    theme: Theme,
+    systemTheme: Theme,
+    setThemePreference(theme: Theme): void,
+} | undefined>(undefined);
+const ThemeProvider: React.FC<{ children: React.ReactNode, prefer?: "light" | "dark" }> = ({ children, prefer }) => {
+    const pref = prefer ?? "light";
+    const [systemTheme, setSystemTheme] = useState<Theme>(pref);
+    const [themePref, setThemePref] = useState<Theme | undefined>(undefined);
+    // add a listener to system preference on which theme
+    // TODO: is there another way that remove event listener faster?
+    useEffect(() => {
+        console.log("useEffect called");
+        type EventType = { matches: boolean };
+        const onThemeChange = (event: EventType) => {
+            const newColorScheme = event.matches ? "dark" : "light";
+            setSystemTheme(newColorScheme);
+        };
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onThemeChange);
+        return () => {
+            console.log("useEffect unmount");
+            window.matchMedia('(prefers-color-scheme: dark)').removeEventListener("change", onThemeChange)
+        }
+    }, []);
+    return <ThemeContext.Provider value={{
+        theme: themePref ?? systemTheme,
+        systemTheme: systemTheme,
+        setThemePreference: setThemePref,
+    }}>{children}</ThemeContext.Provider>
+}
+const useTheme = () => useContext(ThemeContext);
+
+
 const circle = cva("absolute rounded-full border -z-10", {
     variants: {
         size: {
@@ -237,7 +272,9 @@ const ImageDisplay: React.FC<{ imageDisplayHook: ImageDisplayHook }> = ({ imageD
     // setImageRepo,
     imgIndex,
     image
-} }) => <div className="relative bg-gray-100/30 rounded-md overflow-hidden">
+} }) => {
+    const {theme} = useTheme()!;
+    return <div className="relative h-fit w-fit bg-gray-100/30 rounded-md">
         <button className="group left-0 absolute w-5/12 h-full flex flex-row justify-start items-center" onClick={prev}>
             <span className={imageButton()}>{"<"}</span>
         </button>
@@ -248,13 +285,15 @@ const ImageDisplay: React.FC<{ imageDisplayHook: ImageDisplayHook }> = ({ imageD
             <div className="flex flex-row justify-between items-center gap-2">
                 {Array.from(Array(imageRepo.length).keys()).map(i => <div className={imageIndex({
                     active: (i == imgIndex ? "isActive" : "isInactive"),
-                    theme: "light"
+                    theme: theme
                 })}
                     key={`img-index-${i}`} />)}
             </div>
         </div>
-        {image && <Image placeholder="blur" src={image.src} alt={image.alt} className="w-96 h-96 object-contain rounded-md overflow-hidden transition-all" />}
+        {image && <Image placeholder="blur" src={image.src} alt={image.alt} 
+            className="w-96 h-96 object-contain rounded-md" />}
     </div>
+}
 
 const MyLink: React.FC<{ href: string, children?: ReactNode }> = ({ href, children }) => <Link
     className="text-amber-400/70 visited:text-purple-400/70 hover:text-amber-400 visited:hover:text-purple-400" href={href}>
@@ -266,7 +305,7 @@ const About = () => {
 
     return <Article>
         <SectionHeader>About</SectionHeader>
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row w-11/12 justify-evenly max-w-screen-lg gap-8">
             <ImageDisplay imageDisplayHook={imgDisplay} />
             <div className="text-left">
                 <Section>
@@ -328,7 +367,7 @@ const NavbarItem: React.FC<{
 </Link>
 
 
-const iconCva = cva("transition-colors", {
+const iconCva = cva("transition-colors group-hover:animate-bounce", {
     variants: {
         theme: {
             light: "group-hover:fill-gray-700 fill-gray-400"
@@ -339,51 +378,22 @@ const iconCva = cva("transition-colors", {
     }
 });
 
-const Navbar = () => <div className="flex justify-center items-center w-full z-50 sticky top-0 left-0 backdrop-blur-md h-8">
-    <div className="w-11/12 max-w-screen-lg flex items-center gap-4">
-        <div className="flex flex-row justify-center items-center gap-1">
-            <NavbarItem text="GitHub" link="https://github.com/pegasust"><FaGithub className={iconCva()} /></NavbarItem>
-            <NavbarItem text="LinkedIn" link="https://linkedin.com/in/hung-tran-1963bb205/"><FaLinkedin className={iconCva()} /></NavbarItem>
+const Navbar = () => {
+    const _theme = useTheme();
+    if (!_theme) { throw new Error("no theme provider"); }
+    const { theme, setThemePreference } = _theme;
+    return <div className="flex justify-center items-center w-full z-50 sticky top-0 left-0 backdrop-blur-md h-8">
+        <div className="w-11/12 max-w-screen-lg flex items-center gap-4">
+            <div className="flex flex-row justify-center items-center gap-1">
+                <NavbarItem text="GitHub" link="https://github.com/pegasust"><FaGithub className={iconCva()} /></NavbarItem>
+                <NavbarItem text="LinkedIn" link="https://linkedin.com/in/hung-tran-1963bb205/"><FaLinkedin className={iconCva()} /></NavbarItem>
+            </div>
+            <Link href="#brief">
+                <span className="transition-colors hover:text-amber-400 text-amber-400/50 hover:animate-pulse">Hung Tran</span>
+            </Link>
         </div>
-        <Link href="#brief">
-            <span className="transition-colors hover:text-amber-400 text-amber-400/50 animate-pulse">Hung Tran</span>
-        </Link>
     </div>
-</div>
-
-type Theme = "dark" | "light";
-
-const ThemeContext = React.createContext<{
-    theme: Theme,
-    systemTheme: Theme,
-    setThemePreference(theme: Theme): void,
-} | undefined>(undefined);
-const ThemeProvider: React.FC<{ children: React.ReactNode, prefer?: "light" | "dark" }> = ({ children, prefer }) => {
-    const pref = prefer ?? "light";
-    const [systemTheme, setSystemTheme] = useState<Theme>(pref);
-    const [themePref, setThemePref] = useState<Theme | undefined>(undefined);
-    // add a listener to system preference on which theme
-    // TODO: is there another way that remove event listener faster?
-    useEffect(() => {
-        console.log("useEffect called");
-        type EventType = { matches: boolean };
-        const onThemeChange = (event: EventType) => {
-            const newColorScheme = event.matches ? "dark" : "light";
-            setSystemTheme(newColorScheme);
-        };
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onThemeChange);
-        return () => {
-            console.log("useEffect unmount");
-            window.matchMedia('(prefers-color-scheme: dark)').removeEventListener("change", onThemeChange)
-        }
-    }, []);
-    return <ThemeContext.Provider value={{
-        theme: themePref ?? systemTheme,
-        systemTheme: systemTheme,
-        setThemePreference: setThemePref,
-    }}>{children}</ThemeContext.Provider>
 }
-const useTheme = () => useContext(ThemeContext);
 
 const Home: NextPage = () => {
     return (

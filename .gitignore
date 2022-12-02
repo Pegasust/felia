@@ -32,3 +32,6 @@ yarn-error.log*
 # turbo
 .turbo
 .direnv
+
+# I just clone create-t3-turbo and copy the apps and packages, so pls ignore it
+create-t3-turbo

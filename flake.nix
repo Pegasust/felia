@@ -26,6 +26,7 @@
           nativeBuildInputs = [ pkgs.bashInteractive ];
           buildInputs = [
             pkgs.nodejs-18_x
+            # pkgs.prettierd # not available?
             pkgs.nodePackages.pnpm
             pkgs.nodePackages.prisma
             pkgs.prisma-engines

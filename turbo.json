@@ -2,23 +2,54 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "dependsOn": [
+        "^build",
+        "^db-generate"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        ".expo/**"
+      ]
     },
     "lint": {
       "outputs": []
     },
     "dev": {
+      "dependsOn": [
+        "^db-generate"
+      ],
       "cache": false
     },
     "dev:local_infra": {
       "cache": false
     },
-    "db:migrate": {
+    "db-generate": {
+      "inputs": [
+        "prisma/schema.prisma"
+      ],
+      "cache": false
+    },
+    "db-push": {
+      "inputs": [
+        "prisma/schema.prisma"
+      ],
       "cache": false
     },
     "test": {
       "outputs": [],
+      "cache": false
+    },
+    "type-check": {
+      "dependsOn": [
+        "^db-generate"
+      ],
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#clean": {
       "cache": false
     },
     "about-me#build": {
@@ -32,7 +63,10 @@
         "NODE_ENV",
         "DATABASE_URL"
       ],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": [
+        "dist/**",
+        ".next/**"
+      ]
     }
   }
 }

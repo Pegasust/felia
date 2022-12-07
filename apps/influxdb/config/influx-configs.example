@@ -1,0 +1,6 @@
+[default]
+  url = "http://localhost:8086"
+  token = "some-admin-token"
+  org = "someOrganization"
+  active = true
+

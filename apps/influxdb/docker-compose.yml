@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json
+version: '3'
+services:
+  influxdb:
+    image: influxdb:2.5.1-alpine
+    env_file: influxdb.env
+    volumes:
+    - influx_data:/var/lib/influxdb2
+    - ./config:/etc/influxdb2
+    networks: [felia]
+    ports:
+    - 8086:8086
+    restart: unless-stopped
+
+  # provider:
+  #   image: python:3.9.15-buster
+  #   restart: unless-stopped
+  #   command: bash -c "/usr/src/app/install-pip.sh && python /usr/src/app/provider.py"
+  #   volumes:
+  #   - ./provider:/usr/src/app
+  #   environment:
+  #     INFLUXDB_URL: http://influxdb:8086
+
+volumes:
+  influx_data:
+
+networks:
+  felia:
+    name: felia-nginx-net
+

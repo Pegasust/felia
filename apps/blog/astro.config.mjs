@@ -18,5 +18,7 @@ export default defineConfig({
       wrap: true
     }
   },
-  integrations: [tailwind()]
+  integrations: [tailwind({
+    config: {}
+  })]
 });

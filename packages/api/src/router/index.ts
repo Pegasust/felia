@@ -5,6 +5,7 @@ import { authRouter } from "./auth";
 export const appRouter = router({
   post: postRouter,
   auth: authRouter,
+  namegen: nameGenRouter,
 });
 
 // export type definition of API

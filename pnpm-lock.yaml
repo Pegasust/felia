@@ -27,6 +27,7 @@ importers:
 
   apps/about-me:
     specifiers:
+      '@acme/tsconfig': workspace:*
       '@babel/core': ^7.0.0
       '@prisma/client': ^4.5.0
       '@tanstack/react-query': ^4.10.0
@@ -54,7 +55,6 @@ importers:
       superjson: 1.9.1
       tailwind-scrollbar: ^2.0.1
       tailwindcss: ^3.2.0
-      tsconfig: workspace:*
       typescript: ^4.8.4
       ui: workspace:*
       zod: ^3.18.0
@@ -73,6 +73,7 @@ importers:
       ui: link:../../packages/ui
       zod: 3.19.1
     devDependencies:
+      '@acme/tsconfig': link:../../packages/tsconfig
       '@babel/core': 7.20.2
       '@types/node': 18.11.9
       '@types/react': 18.0.25
@@ -89,11 +90,11 @@ importers:
       prisma: 4.6.1
       tailwind-scrollbar: 2.0.1_tailwindcss@3.2.4
       tailwindcss: 3.2.4_postcss@8.4.14
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.8.4
 
   apps/docs:
     specifiers:
+      '@acme/tsconfig': workspace:*
       '@babel/core': ^7.0.0
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
@@ -103,7 +104,6 @@ importers:
       next: 13.0.0
       react: 18.2.0
       react-dom: 18.2.0
-      tsconfig: workspace:*
       typescript: ^4.5.3
       ui: workspace:*
     dependencies:
@@ -112,13 +112,13 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       ui: link:../../packages/ui
     devDependencies:
+      '@acme/tsconfig': link:../../packages/tsconfig
       '@babel/core': 7.20.2
       '@types/node': 17.0.45
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.9
       eslint: 7.32.0
       eslint-config-custom: link:../../packages/eslint-config-custom
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.8.4
 
   apps/name-generator:
@@ -127,6 +127,7 @@ importers:
       '@acme/auth': workspace:*
       '@acme/db': workspace:*
       '@acme/tailwind-config': workspace:*
+      '@acme/tsconfig': workspace:*
       '@tanstack/react-query': ^4.16.1
       '@trpc/client': ^10.1.0
       '@trpc/next': ^10.1.0
@@ -162,6 +163,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       zod: 3.19.1
     devDependencies:
+      '@acme/tsconfig': link:../../packages/tsconfig
       '@types/node': 18.11.9
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.9
@@ -174,6 +176,7 @@ importers:
 
   apps/web:
     specifiers:
+      '@acme/tsconfig': workspace:*
       '@babel/core': ^7.0.0
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
@@ -183,7 +186,6 @@ importers:
       next: 13.0.0
       react: 18.2.0
       react-dom: 18.2.0
-      tsconfig: workspace:*
       typescript: ^4.5.3
       ui: workspace:*
     dependencies:
@@ -192,13 +194,13 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       ui: link:../../packages/ui
     devDependencies:
+      '@acme/tsconfig': link:../../packages/tsconfig
       '@babel/core': 7.20.2
       '@types/node': 17.0.45
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.9
       eslint: 7.32.0
       eslint-config-custom: link:../../packages/eslint-config-custom
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.8.4
 
   packages/api:
@@ -300,20 +302,20 @@ importers:
 
   packages/ui:
     specifiers:
+      '@acme/tsconfig': workspace:*
       '@types/react': ^18.0.17
       '@types/react-dom': ^18.0.6
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
       react: ^18.2.0
-      tsconfig: workspace:*
       typescript: ^4.5.2
     devDependencies:
+      '@acme/tsconfig': link:../tsconfig
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.9
       eslint: 7.32.0
       eslint-config-custom: link:../eslint-config-custom
       react: 18.2.0
-      tsconfig: link:../tsconfig
       typescript: 4.8.4
 
 packages:

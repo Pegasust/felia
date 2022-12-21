@@ -1,12 +1,37 @@
 {
-  "extends": "../../tsconfig.json",
-  "exclude": [],
+  "extends": "@acme/tsconfig/t3.json",
   "include": [
     "next-env.d.ts",
-    "node_modules/@acme/auth/next-auth.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs"
-  ]
+    "**/*.mjs",
+    "node_modules/@acme/auth/next-auth.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@env/*": [
+        "src/env/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@api/*": [
+        "@acme/api/*"
+      ],
+      "@public/*": [
+        "public/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ]
+    }
+  }
 }
